@@ -7,5 +7,5 @@ import retrofit2.http.POST
 interface CustomerApiInterface {
 
 	@POST("api/signIn")
-	fun signIn(@Body emailPassword: EmailPassword): Call<SigninResponse>
+	fun signIn(@Body emailPassword: EmailPassword): Call<SignInResponse>
 }
