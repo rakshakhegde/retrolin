@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+	compileSdkVersion 24
+	buildToolsVersion "24.0.1"
+	defaultConfig {
+		applicationId "io.github.rakshakhegde.retrolinsample"
+		minSdkVersion 9
+		targetSdkVersion 24
+		versionCode 1
+		versionName "1.0"
+		testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+	}
+	buildTypes {
+		release {
+			minifyEnabled false
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+		}
+	}
+	sourceSets {
+		main.java.srcDirs += 'src/main/kotlin'
+	}
+}
+
+ext {
+	supportLibVersion = "24.1.1"
+	ankoLibVersion = "0.9"
+}
+
+dependencies {
+	compile fileTree(include: ['*.jar'], dir: 'libs')
+	androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+		exclude group: 'com.android.support', module: 'support-annotations'
+	})
+	compile project(':retrolin')
+
+	compile "com.android.support:appcompat-v7:$supportLibVersion"
+	compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha5'
+
+	compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+	compile "org.jetbrains.anko:anko-sdk15:$ankoLibVersion"
+
+	testCompile 'junit:junit:4.12'
+}
+repositories {
+	mavenCentral()
+}
