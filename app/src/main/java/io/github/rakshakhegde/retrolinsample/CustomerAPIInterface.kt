@@ -2,10 +2,10 @@ package io.github.rakshakhegde.retrolinsample
 
 import retrofit2.Call
 import retrofit2.http.Body
-import retrofit2.http.POST
+import retrofit2.http.GET
 
 interface CustomerApiInterface {
 
-	@POST("api/signIn")
-	fun signIn(@Body emailPassword: EmailPassword): Call<SignInResponse>
+	@GET
+	fun call(): Call<MyResponse>
 }
